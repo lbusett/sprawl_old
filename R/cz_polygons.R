@@ -137,8 +137,11 @@ cz_polygons <- function(in_vect_zones, in_rast, seldates, selbands, n_selbands, 
   #   _______________________________________________________________________________
   #   Extract data from in_rast - foreach cycle on selected bands of in_rast    ####
 
-  results <- foreach::foreach(band = 1:n_selbands, .packages = c("gdalUtils", "raster", "dplyr", "tibble",
-                                                                 "data.table", "sf", "velox"), .verbose = FALSE,
+  results <- foreach::foreach(band = 1:n_selbands,
+                              .packages = c("gdalUtils", "raster",
+                                            "dplyr", "tibble",
+                                            "data.table", "sf", "velox"),
+                              .verbose = TRUE,
                               .options.snow = opts) %dopar%
     {
       # for (band in 1:1) {
